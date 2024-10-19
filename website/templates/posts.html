@@ -1,0 +1,45 @@
+{% extends "base.html"%}
+{% block title%} Login {%endblock%}
+{% block content%}
+ 
+
+<h1>{{ user.username }}'s Posts</h1>
+
+{% for post in posts %}
+<div class="container posts-content">
+    <div class="row">
+        <div class="card mb-8">
+            <div class="card-body">
+                <div class="media mb-3">
+                    <div class="media-body ml-3">
+                        <div class="text-muted small">Created on: {{ post.date_created.strftime('%Y-%m-%d %H:%M') }}</div>
+                    </div>
+                </div>
+                <p>{{ post.text }}</p>
+                <a href="javascript:void(0)" class="ui-rect ui-bg-cover" style="background-image: url('https://bootdey.com/img/Content/avatar/avatar3.png');"></a>
+            </div>
+            <div class="card-footer">
+                <a href="javascript:void(0)" class="d-inline-block text-muted">
+                    <small class="align-middle">123 Likes</small>
+                </a>
+                <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                    <small class="align-middle">12 Comments</small>
+                </a>
+                <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                    <small class="align-middle">Repost</small>
+                </a>
+                {% if current_user == post.user %}
+                <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                    <form action="{{ url_for('views.delete_post', post_id=post.id) }}" method="POST" class="d-inline-block text-muted ml-3 form-group">
+                        <button type="submit" class="btn d-md-flex justify-content-md-end"> Delete</button>
+                    </form>
+                </a> 
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+ 
+ {%endblock%}
