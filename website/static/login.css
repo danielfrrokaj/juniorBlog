@@ -1,7 +1,4 @@
 .form {
-    align: center;
-    text-align: center;
-    align-items: center;
     padding-top: 100px;
 }
 .form label {
@@ -24,12 +21,10 @@
 }
 
 .button button {
-   padding-top: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
-   padding-bottom: 10px;
+   
    background-color: rgb(33, 86, 63);
    color: white;
    border-radius: 10px;
-   width: 200px;
+   border:0px;
+
 }
